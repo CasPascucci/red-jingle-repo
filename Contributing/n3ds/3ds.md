@@ -4,7 +4,7 @@ Fork the repository and we'll get started.
 
 First, get your 3DS rom files ready. This means they'll need to be in either the .3ds or .cci file format. If you have .zcci, .z3ds, .cia, or .app, you will have to convert them into one of these two formats.
 
-Then, you're going to need to download the tools (3dstool)<https://github.com/dnasdw/3dstool> and (vgmstream)<https://github.com/vgmstream/vgmstream-releases/releases/download/nightly/vgmstream-win64.zip>. Depending on the rom, I would highly recommend you have `python3`, and on Windows, python is required.
+Then, you're going to need to download the tools [3dstool](https://github.com/dnasdw/3dstool) and [vgmstream](https://github.com/vgmstream/vgmstream-releases/releases/download/nightly/vgmstream-win64.zip). Depending on the rom, I would highly recommend you have `python3`, and on Windows, python is required.
 
 Once you have these installed, move all your ROMs into one folder. For ease of use, scripts are provided to extract your .wavs for you. (`extract_jingle.sh/bat` in the Contributing/n3ds directory of the repository.) Thank you to Celthium for providing the batchfile.
 
