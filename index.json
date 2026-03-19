@@ -168,8 +168,60 @@
   ],
   "wii": [
     {
+      "name": "Fire Emblem - Radiant Dawn",
+      "file": "jingles/wii/fire-emblem-radiant-dawn.wav"
+    },
+    {
+      "name": "Last Story, The",
+      "file": "jingles/wii/last-story-the.wav"
+    },
+    {
+      "name": "Mario Kart Wii",
+      "file": "jingles/wii/mario-kart-wii.wav"
+    },
+    {
+      "name": "Metroid - Other M",
+      "file": "jingles/wii/metroid-other-m.wav"
+    },
+    {
       "name": "Metroid Prime Trilogy",
       "file": "jingles/wii/metroid-prime-trilogy.wav"
+    },
+    {
+      "name": "Muramasa - The Demon Blade",
+      "file": "jingles/wii/muramasa-the-demon-blade.wav"
+    },
+    {
+      "name": "New Super Mario Bros. Wii",
+      "file": "jingles/wii/new-super-mario-bros-wii.wav"
+    },
+    {
+      "name": "Nights - Journey of Dreams",
+      "file": "jingles/wii/nights-journey-of-dreams.wav"
+    },
+    {
+      "name": "Pokemon Battle Revolution",
+      "file": "jingles/wii/pokemon-battle-revolution.wav"
+    },
+    {
+      "name": "Punch-Out!!",
+      "file": "jingles/wii/punch-out.wav"
+    },
+    {
+      "name": "Rhythm Heaven Fever",
+      "file": "jingles/wii/rhythm-heaven-fever.wav"
+    },
+    {
+      "name": "Super Mario Galaxy",
+      "file": "jingles/wii/super-mario-galaxy.wav"
+    },
+    {
+      "name": "Super Mario Galaxy 2",
+      "file": "jingles/wii/super-mario-galaxy-2.wav"
+    },
+    {
+      "name": "Super Paper Mario",
+      "file": "jingles/wii/super-paper-mario.wav"
     }
   ]
 }
