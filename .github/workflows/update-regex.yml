@@ -3,8 +3,8 @@ name: Sync Upstream & Fill Regex
 # ─── Triggers ───────────────────────────────────────────────────────────────
 on:
   schedule:
-    # Runs every Monday at 06:00 UTC — adjust to taste
-    - cron: "0 6 * * 1"
+    # Runs every Monday at 03:00 UTC — adjust to taste
+    - cron: "0 3 * * 1"
 
   workflow_dispatch:
     inputs:
