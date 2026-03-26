@@ -37,9 +37,9 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       # 3. Optionally sync from an upstream repo.
-      #    Set the UPSTREAM_URL repository variable in:
-      #    Settings → Secrets and variables → Actions → Variables
-      #    Leave it empty if this repo is not a fork or you don't want auto-sync.
+      #    For index.json specifically, always take the upstream version —
+      #    our only "changes" to it are regex fields added by this script,
+      #    so the right strategy is: accept upstream's content, then re-fill regex.
       - name: Sync upstream
         if: vars.UPSTREAM_URL != ''
         run: |
@@ -47,10 +47,20 @@ jobs:
           git remote add upstream "${{ vars.UPSTREAM_URL }}"
           git fetch upstream
 
-          # Try merging main; fall back to master
           DEFAULT_BRANCH=$(git remote show upstream | awk '/HEAD branch/ {print $NF}')
           echo "Upstream default branch: $DEFAULT_BRANCH"
-          git merge "upstream/$DEFAULT_BRANCH" --no-edit --allow-unrelated-histories
+
+          # Merge, but on any conflict in index.json take the upstream version.
+          # Our regex fields will be re-added by fill_regex.py in the next step.
+          git merge "upstream/$DEFAULT_BRANCH" --no-edit --allow-unrelated-histories -X theirs || true
+
+          # If there are still unresolved conflicts, force-take upstream's index.json
+          if git ls-files --unmerged | grep -q index.json; then
+            echo "Conflict remains in index.json — taking upstream version"
+            git checkout upstream/$DEFAULT_BRANCH -- index.json
+            git add index.json
+            git commit -m "chore: accept upstream index.json (regex will be re-filled)"
+          fi
 
       # 4. Python + dependencies
       - name: Set up Python
