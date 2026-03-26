@@ -9,6 +9,10 @@
   ],
   "n3ds": [
     {
+      "name": "Alliance Alive, The",
+      "file": "jingles/n3ds/alliance-alive-the.wav"
+    },
+    {
       "name": "Animal Crossing - New Leaf",
       "file": "jingles/n3ds/animal-crossing-new-leaf.wav",
       "regex": "animal crossing.*new leaf"
@@ -17,6 +21,86 @@
       "name": "BOXBOY!",
       "file": "jingles/n3ds/boxboy.wav",
       "regex": "box.?boy"
+    },
+    {
+      "name": "Bravely Second - End Layer",
+      "file": "jingles/n3ds/bravely-second-end-layer.wav"
+    },
+    {
+      "name": "Captain Toad - Treasure Tracker",
+      "file": "jingles/n3ds/captain-toad-treasure-tracker.wav"
+    },
+    {
+      "name": "Castlevania - Lords of Shadow - Mirror of Fate",
+      "file": "jingles/n3ds/castlevania-lords-of-shadow-mirror-of-fate.wav"
+    },
+    {
+      "name": "Code Name - S.T.E.A.M.",
+      "file": "jingles/n3ds/code-name-steam.wav"
+    },
+    {
+      "name": "Cooking Mama - Sweet Shop",
+      "file": "jingles/n3ds/cooking-mama-sweet-shop.wav"
+    },
+    {
+      "name": "Cooking Mama 5 - Bon Appetit",
+      "file": "jingles/n3ds/cooking-mama-5-bon-appetit.wav"
+    },
+    {
+      "name": "Culdcept Revolt",
+      "file": "jingles/n3ds/culdcept-revolt.wav"
+    },
+    {
+      "name": "Detective Pikachu",
+      "file": "jingles/n3ds/detective-pikachu.wav"
+    },
+    {
+      "name": "Dragon Ball Fusions",
+      "file": "jingles/n3ds/dragon-ball-fusions.wav"
+    },
+    {
+      "name": "Dragon Quest Monsters - Joker 3 Professional",
+      "file": "jingles/n3ds/dragon-quest-monsters-joker-3-professional.wav"
+    },
+    {
+      "name": "Dragon Quest Monsters - Terry no Wonderland 3D",
+      "file": "jingles/n3ds/dragon-quest-monsters-terry-no-wonderland-3d.wav"
+    },
+    {
+      "name": "Dragon Quest Monsters 2 - Iru to Ruka no Fushigi na Fushigi na Kagi",
+      "file": "jingles/n3ds/dragon-quest-monsters-2-iru-to-ruka-no-fushigi-na-fushigi-na-kagi.wav"
+    },
+    {
+      "name": "Dragon Quest VIII - Journey of the Cursed King",
+      "file": "jingles/n3ds/dragon-quest-viii-journey-of-the-cursed-king.wav"
+    },
+    {
+      "name": "Etrian Mystery Dungeon",
+      "file": "jingles/n3ds/etrian-mystery-dungeon.wav"
+    },
+    {
+      "name": "Etrian Odyssey 2 Untold - The Fafnir Knight",
+      "file": "jingles/n3ds/etrian-odyssey-2-untold-the-fafnir-knight.wav"
+    },
+    {
+      "name": "Etrian Odyssey IV - Legends of the Titan",
+      "file": "jingles/n3ds/etrian-odyssey-iv-legends-of-the-titan.wav"
+    },
+    {
+      "name": "Etrian Odyssey Nexus",
+      "file": "jingles/n3ds/etrian-odyssey-nexus.wav"
+    },
+    {
+      "name": "Etrian Odyssey Untold - The Millennium Girl",
+      "file": "jingles/n3ds/etrian-odyssey-untold-the-millennium-girl.wav"
+    },
+    {
+      "name": "Etrian Odyssey V - Beyond the Myth",
+      "file": "jingles/n3ds/etrian-odyssey-v-beyond-the-myth.wav"
+    },
+    {
+      "name": "Ever Oasis",
+      "file": "jingles/n3ds/ever-oasis.wav"
     },
     {
       "name": "Fantasy Life",
@@ -29,9 +113,21 @@
       "regex": "fire.?emblem.*awakening"
     },
     {
+      "name": "Fire Emblem Echoes - Shadows of Valentia",
+      "file": "jingles/n3ds/fire-emblem-echoes-shadows-of-valentia.wav"
+    },
+    {
+      "name": "Fire Emblem Fates - Limited Edition",
+      "file": "jingles/n3ds/fire-emblem-fates-limited-edition.wav"
+    },
+    {
       "name": "Fossil Fighters - Frontier",
       "file": "jingles/n3ds/fossil-fighters-frontier.wav",
       "regex": "fossil fighters.*frontier"
+    },
+    {
+      "name": "Hatsune Miku - Project Mirai DX",
+      "file": "jingles/n3ds/hatsune-miku-project-mirai-dx.wav"
     },
     {
       "name": "Hey! Pikmin",
@@ -39,9 +135,25 @@
       "regex": "hey.?pikmin"
     },
     {
+      "name": "Inazuma Eleven 3 - Team Ogre Attacks",
+      "file": "jingles/n3ds/inazuma-eleven-3-team-ogre-attacks.wav"
+    },
+    {
+      "name": "Inazuma Eleven GO - Chrono Stones - Thunderflash",
+      "file": "jingles/n3ds/inazuma-eleven-go-chrono-stones-thunderflash.wav"
+    },
+    {
+      "name": "Inazuma Eleven GO - Light",
+      "file": "jingles/n3ds/inazuma-eleven-go-light.wav"
+    },
+    {
       "name": "Kid Icarus - Uprising",
       "file": "jingles/n3ds/kid-icarus-uprising.wav",
       "regex": "kid icarus.*uprising"
+    },
+    {
+      "name": "Kingdom Hearts 3D - Dream Drop Distance",
+      "file": "jingles/n3ds/kingdom-hearts-3d-dream-drop-distance.wav"
     },
     {
       "name": "Kirby - Planet Robobot",
@@ -57,6 +169,14 @@
       "name": "Kirby's Extra Epic Yarn",
       "file": "jingles/n3ds/kirbys-extra-epic-yarn.wav",
       "regex": "kirby.*extra epic yarn"
+    },
+    {
+      "name": "Layton's Mystery Journey - Katrielle and the Millionaires' Conspiracy",
+      "file": "jingles/n3ds/laytons-mystery-journey-katrielle-and-the-millionaires-conspiracy.wav"
+    },
+    {
+      "name": "Legend of Legacy, The",
+      "file": "jingles/n3ds/legend-of-legacy-the.wav"
     },
     {
       "name": "Legend of Zelda, The - A Link Between Worlds",
@@ -79,6 +199,10 @@
       "regex": "^luigi'?s mansion$"
     },
     {
+      "name": "Luigi's Mansion - Dark Moon",
+      "file": "jingles/n3ds/luigis-mansion-dark-moon.wav"
+    },
+    {
       "name": "Mario & Luigi - Bowser's Inside Story + Bowser Jr.'s Journey",
       "file": "jingles/n3ds/mario-luigi-bowsers-inside-story-bowser-jrs-journey.wav",
       "regex": "mario.*luigi.*bowser'?s inside story|mario.*luigi.*bis"
@@ -89,6 +213,10 @@
       "regex": "mario.*luigi.*dream team"
     },
     {
+      "name": "Mario & Luigi - Paper Jam",
+      "file": "jingles/n3ds/mario-luigi-paper-jam.wav"
+    },
+    {
       "name": "Mario & Luigi - Superstar Saga + Bowser's Minions",
       "file": "jingles/n3ds/mario-luigi-superstar-saga-bowsers-minions.wav",
       "regex": "mario.*luigi.*superstar saga"
@@ -97,6 +225,10 @@
       "name": "Mario Kart 7",
       "file": "jingles/n3ds/mario-kart-7.wav",
       "regex": "mario kart 7|mk7"
+    },
+    {
+      "name": "Metal Gear Solid 3D - Snake Eater",
+      "file": "jingles/n3ds/metal-gear-solid-3d-snake-eater.wav"
     },
     {
       "name": "Metroid - Samus Returns",
@@ -139,6 +271,10 @@
       "regex": "pok[eé]mon sun$"
     },
     {
+      "name": "Pokemon Super Mystery Dungeon",
+      "file": "jingles/n3ds/pokemon-super-mystery-dungeon.wav"
+    },
+    {
       "name": "Pokemon Ultra Moon",
       "file": "jingles/n3ds/pokemon-ultra-moon.wav",
       "regex": "pok[eé]mon ultra moon"
@@ -169,9 +305,53 @@
       "regex": "professor layton.*phoenix wright|layton.*ace attorney"
     },
     {
+      "name": "Project X Zone",
+      "file": "jingles/n3ds/project-x-zone.wav"
+    },
+    {
+      "name": "Project X Zone 2",
+      "file": "jingles/n3ds/project-x-zone-2.wav"
+    },
+    {
+      "name": "Radiant Historia - Perfect Chronology",
+      "file": "jingles/n3ds/radiant-historia-perfect-chronology.wav"
+    },
+    {
+      "name": "Rhythm Paradise Megamix",
+      "file": "jingles/n3ds/rhythm-paradise-megamix.wav"
+    },
+    {
+      "name": "Shin Megami Tensei - Devil Summoner - Soul Hackers",
+      "file": "jingles/n3ds/shin-megami-tensei-devil-summoner-soul-hackers.wav"
+    },
+    {
+      "name": "Shin Megami Tensei - Devil Survivor 2 - Record Breaker",
+      "file": "jingles/n3ds/shin-megami-tensei-devil-survivor-2-record-breaker.wav"
+    },
+    {
+      "name": "Shin Megami Tensei - Devil Survivor Overclocked",
+      "file": "jingles/n3ds/shin-megami-tensei-devil-survivor-overclocked.wav"
+    },
+    {
+      "name": "Shin Megami Tensei - Strange Journey Redux",
+      "file": "jingles/n3ds/shin-megami-tensei-strange-journey-redux.wav"
+    },
+    {
       "name": "Shin Megami Tensei IV",
       "file": "jingles/n3ds/shin-megami-tensei-iv.wav",
       "regex": "shin megami tensei (iv|4)$|smt.?(iv|4)$"
+    },
+    {
+      "name": "Shovel Knight Treasure Trove",
+      "file": "jingles/n3ds/shovel-knight-treasure-trove.wav"
+    },
+    {
+      "name": "Star Fox 64 3D",
+      "file": "jingles/n3ds/star-fox-64-3d.wav"
+    },
+    {
+      "name": "Stella Glow",
+      "file": "jingles/n3ds/stella-glow.wav"
     },
     {
       "name": "Super Mario 3D Land",
@@ -187,6 +367,10 @@
       "name": "Sushi Striker - The Way of Sushido",
       "file": "jingles/n3ds/sushi-striker-the-way-of-sushido.wav",
       "regex": "sushi striker"
+    },
+    {
+      "name": "Tomodachi Life",
+      "file": "jingles/n3ds/tomodachi-life.wav"
     },
     {
       "name": "WarioWare Gold",
@@ -215,8 +399,23 @@
     },
     {
       "name": "Yo-Kai Watch 3",
-      "file": "jingles/n3ds/yo-kai-watch-3.wav",
-      "regex": "^yo.?kai watch 3$"
+      "file": "jingles/n3ds/yo-kai-watch-3.wav"
+    },
+    {
+      "name": "Yoshi's New Island",
+      "file": "jingles/n3ds/yoshis-new-island.wav"
+    },
+    {
+      "name": "Yu-Gi-Oh! Duel Monsters Saikyo Card Battle",
+      "file": "jingles/n3ds/yu-gi-oh-duel-monsters-saikyo-card-battle.wav"
+    },
+    {
+      "name": "Zero Escape - Virtue's Last Reward",
+      "file": "jingles/n3ds/zero-escape-virtues-last-reward.wav"
+    },
+    {
+      "name": "Zero Escape - Zero Time Dilemma",
+      "file": "jingles/n3ds/zero-escape-zero-time-dilemma.wav"
     }
   ],
   "ps2": [
