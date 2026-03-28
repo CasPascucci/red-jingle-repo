@@ -9,6 +9,10 @@
   ],
   "n3ds": [
     {
+      "name": "7th Dragon III Code - VFD",
+      "file": "jingles/n3ds/7th-dragon-iii-code-vfd.wav"
+    },
+    {
       "name": "Alliance Alive, The",
       "file": "jingles/n3ds/alliance-alive-the.wav",
       "regex": "the alliance alive|alliance alive"
@@ -19,9 +23,17 @@
       "regex": "animal crossing.*new leaf"
     },
     {
+      "name": "Batman - Arkham Origins Blackgate",
+      "file": "jingles/n3ds/batman-arkham-origins-blackgate.wav"
+    },
+    {
       "name": "BOXBOY!",
       "file": "jingles/n3ds/boxboy.wav",
       "regex": "box.?boy"
+    },
+    {
+      "name": "Bravely Default",
+      "file": "jingles/n3ds/bravely-default.wav"
     },
     {
       "name": "Bravely Second - End Layer",
@@ -64,6 +76,10 @@
       "regex": "detective pikachu"
     },
     {
+      "name": "Dillon's Dead-Heat Breakers",
+      "file": "jingles/n3ds/dillons-dead-heat-breakers.wav"
+    },
+    {
       "name": "Dragon Ball Fusions",
       "file": "jingles/n3ds/dragon-ball-fusions.wav",
       "regex": "dragon ball fusions"
@@ -87,6 +103,10 @@
       "name": "Dragon Quest VIII - Journey of the Cursed King",
       "file": "jingles/n3ds/dragon-quest-viii-journey-of-the-cursed-king.wav",
       "regex": "dragon quest (viii|8).*journey.*cursed king"
+    },
+    {
+      "name": "Dragon Quest XI - Sugi Sarishi Toki o Motomete",
+      "file": "jingles/n3ds/dragon-quest-xi-sugi-sarishi-toki-o-motomete.wav"
     },
     {
       "name": "Etrian Mystery Dungeon",
@@ -279,6 +299,14 @@
       "regex": "paper mario.*sticker star"
     },
     {
+      "name": "Persona Q - Shadow of the Labyrinth",
+      "file": "jingles/n3ds/persona-q-shadow-of-the-labyrinth.wav"
+    },
+    {
+      "name": "Persona Q2 - New Cinema Labyrinth",
+      "file": "jingles/n3ds/persona-q2-new-cinema-labyrinth.wav"
+    },
+    {
       "name": "Pokemon Alpha Sapphire",
       "file": "jingles/n3ds/pokemon-alpha-sapphire.wav",
       "regex": "pok[eé]mon.*alpha sapphire"
@@ -349,6 +377,10 @@
       "regex": "project x zone 2"
     },
     {
+      "name": "Puzzle & Dragons Z + Puzzle & Dragons Super Mario Bros. Edition",
+      "file": "jingles/n3ds/puzzle-dragons-z-puzzle-dragons-super-mario-bros-edition.wav"
+    },
+    {
       "name": "Radiant Historia - Perfect Chronology",
       "file": "jingles/n3ds/radiant-historia-perfect-chronology.wav",
       "regex": "radiant historia.*perfect chronology"
@@ -382,6 +414,10 @@
       "name": "Shin Megami Tensei IV",
       "file": "jingles/n3ds/shin-megami-tensei-iv.wav",
       "regex": "shin megami tensei (iv|4)$|smt.?(iv|4)$"
+    },
+    {
+      "name": "Shin Megami Tensei IV - Apocalypse",
+      "file": "jingles/n3ds/shin-megami-tensei-iv-apocalypse.wav"
     },
     {
       "name": "Shovel Knight Treasure Trove",
@@ -459,6 +495,10 @@
       "regex": "yu.?gi.?oh!?.*duel monsters.*saikyo.*card battle"
     },
     {
+      "name": "Yu-Gi-Oh! Zexal - Gekitotsu! Duel Carnival!",
+      "file": "jingles/n3ds/yu-gi-oh-zexal-gekitotsu-duel-carnival.wav"
+    },
+    {
       "name": "Zero Escape - Virtue's Last Reward",
       "file": "jingles/n3ds/zero-escape-virtues-last-reward.wav",
       "regex": "zero escape.*virtue'?s last reward"
@@ -474,6 +514,104 @@
       "name": "Final Fantasy X",
       "file": "jingles/ps2/ffx.wav",
       "regex": "final fantasy (x|10)(?![\\s-]*(2|ii))|ffx(?!-?2)|ff10(?![\\s-]*2)"
+    }
+  ],
+  "psp": [
+    {
+      "name": "Crisis Core - Final Fantasy VII",
+      "file": "jingles/psp/crisis-core-final-fantasy-vii.wav"
+    },
+    {
+      "name": "Daxter",
+      "file": "jingles/psp/daxter.wav"
+    },
+    {
+      "name": "Dissidia 012 - Duodecim Final Fantasy",
+      "file": "jingles/psp/dissidia-012-duodecim-final-fantasy.wav"
+    },
+    {
+      "name": "Final Fantasy - 20th Anniversary Edition",
+      "file": "jingles/psp/final-fantasy-20th-anniversary-edition.wav"
+    },
+    {
+      "name": "Final Fantasy II - 20th Anniversary Edition",
+      "file": "jingles/psp/final-fantasy-ii-20th-anniversary-edition.wav"
+    },
+    {
+      "name": "Final Fantasy III",
+      "file": "jingles/psp/final-fantasy-iii.wav"
+    },
+    {
+      "name": "Final Fantasy IV - The Complete Collection",
+      "file": "jingles/psp/final-fantasy-iv-the-complete-collection.wav"
+    },
+    {
+      "name": "God of War - Chains of Olympus",
+      "file": "jingles/psp/god-of-war-chains-of-olympus.wav"
+    },
+    {
+      "name": "God of War - Ghost of Sparta",
+      "file": "jingles/psp/god-of-war-ghost-of-sparta.wav"
+    },
+    {
+      "name": "Grand Theft Auto - Chinatown Wars",
+      "file": "jingles/psp/grand-theft-auto-chinatown-wars.wav"
+    },
+    {
+      "name": "Grand Theft Auto - Liberty City Stories",
+      "file": "jingles/psp/grand-theft-auto-liberty-city-stories.wav"
+    },
+    {
+      "name": "Grand Theft Auto - Vice City Stories",
+      "file": "jingles/psp/grand-theft-auto-vice-city-stories.wav"
+    },
+    {
+      "name": "Hatsune Miku - Project Diva 2nd",
+      "file": "jingles/psp/hatsune-miku-project-diva-2nd.wav"
+    },
+    {
+      "name": "Hatsune Miku - Project Diva Extend",
+      "file": "jingles/psp/hatsune-miku-project-diva-extend.wav"
+    },
+    {
+      "name": "Hatsune Miku - Project Diva",
+      "file": "jingles/psp/hatsune-miku-project-diva.wav"
+    },
+    {
+      "name": "Hot Wheels - Ultimate Racing",
+      "file": "jingles/psp/hot-wheels-ultimate-racing.wav"
+    },
+    {
+      "name": "Kingdom Hearts - Birth by Sleep",
+      "file": "jingles/psp/kingdom-hearts-birth-by-sleep.wav"
+    },
+    {
+      "name": "Metal Gear Solid - Portable Ops Plus",
+      "file": "jingles/psp/metal-gear-solid-portable-ops-plus.wav"
+    },
+    {
+      "name": "Monster Hunter Portable 3rd",
+      "file": "jingles/psp/monster-hunter-portable-3rd.wav"
+    },
+    {
+      "name": "Monster Hunter Portable",
+      "file": "jingles/psp/monster-hunter-portable.wav"
+    },
+    {
+      "name": "Need for Speed - ProStreet",
+      "file": "jingles/psp/need-for-speed-prostreet.wav"
+    },
+    {
+      "name": "Need for Speed - Undercover",
+      "file": "jingles/psp/need-for-speed-undercover.wav"
+    },
+    {
+      "name": "Ridge Racer",
+      "file": "jingles/psp/ridge-racer.wav"
+    },
+    {
+      "name": "Wipeout Pure",
+      "file": "jingles/psp/wipeout-pure.wav"
     }
   ],
   "psx": [
