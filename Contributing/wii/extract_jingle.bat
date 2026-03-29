@@ -77,7 +77,10 @@ for %%f in ("%GAMES_DIR%\*.rvz" "%GAMES_DIR%\*.iso") do (
 
             call :find_sound "%TEMP%\wii_bnr_out" SOUND_FILE
             if defined SOUND_FILE (
-                call :process_rom "%%~nf"
+                set "ROM_NAME=%%~nf"
+                setlocal enabledelayedexpansion
+                call :process_rom "!ROM_NAME!" "!SOUND_FILE!"
+                endlocal
             ) else (
                 echo [Skip] No sound.bin found in %%~nxf
             )
@@ -105,16 +108,20 @@ setlocal
 set "SEARCH_DIR=%~1"
 set "RESULT="
 for /r "%SEARCH_DIR%" %%s in (sound.bin) do (
-    if not defined RESULT set "RESULT=%%s"
+    if exist "%%s" (
+        if not defined RESULT set "RESULT=%%s"
+    )
 )
 endlocal & set "%~2=%RESULT%"
 goto :eof
 
 :process_rom
 setlocal enabledelayedexpansion
+set "ROM_NAME=%~1"
+set "SOUND_FILE=%~2"
 
-for /f "delims=" %%s in ('python "%~dp0_sanitize.py" "%~1"') do set "FINAL=%%s"
-for /f "delims=" %%t in ('python "%~dp0_game_title.py" "%~1"') do set "GAME_TITLE=%%t"
+for /f "delims=" %%s in ('python "%~dp0_sanitize.py" "!ROM_NAME!"') do set "FINAL=%%s"
+for /f "delims=" %%t in ('python "%~dp0_game_title.py" "!ROM_NAME!"') do set "GAME_TITLE=%%t"
 
 "%VGM%" "!SOUND_FILE!" -o "!JINGLES_DIR!\!FINAL!" >nul 2>&1
 echo [Success] Saved as: !FINAL! (Game: !GAME_TITLE!)
