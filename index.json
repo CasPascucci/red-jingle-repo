@@ -589,5 +589,51 @@
       "name": "Super Paper Mario",
       "file": "jingles/wii/super-paper-mario.wav"
     }
+  ],
+  "wiiu": [
+    {
+      "name": "Affordable Space Adventures",
+      "file": "jingles/wiiu/affordable-space-adventures.wav"
+    },
+    {
+      "name": "Kirby and the Rainbow Curse",
+      "file": "jingles/wiiu/kirby-and-the-rainbow-curse.wav"
+    },
+    {
+      "name": "Legend of Zelda, The - Breath of the Wild",
+      "file": "jingles/wiiu/legend-of-zelda-the-breath-of-the-wild.wav"
+    },
+    {
+      "name": "Legend of Zelda, The - The Wind Waker HD",
+      "file": "jingles/wiiu/legend-of-zelda-the-the-wind-waker-hd.wav"
+    },
+    {
+      "name": "Legend of Zelda, The - Twilight Princess HD",
+      "file": "jingles/wiiu/legend-of-zelda-the-twilight-princess-hd.wav"
+    },
+    {
+      "name": "Nintendo Land",
+      "file": "jingles/wiiu/nintendo-land.wav"
+    },
+    {
+      "name": "Paper Mario Color Splash",
+      "file": "jingles/wiiu/paper-mario-color-splash.wav"
+    },
+    {
+      "name": "Splatoon",
+      "file": "jingles/wiiu/splatoon.wav"
+    },
+    {
+      "name": "Super Mario Maker",
+      "file": "jingles/wiiu/super-mario-maker.wav"
+    },
+    {
+      "name": "Yoshi's Woolly World",
+      "file": "jingles/wiiu/yoshis-woolly-world.wav"
+    },
+    {
+      "name": "ZombiU",
+      "file": "jingles/wiiu/zombiu.wav"
+    }
   ]
 }
