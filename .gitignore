@@ -1,3 +1,4 @@
+.DS_Store
 ._*
 *.cci
 *.3ds
@@ -7,5 +8,6 @@
 *.zcci
 *.rvz
 *.iso
+*.wua
 
 

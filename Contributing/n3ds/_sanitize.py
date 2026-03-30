@@ -11,6 +11,7 @@ s = s[:m.start()] if m else s
 s = re.sub(r'[-_ .]?[Ss]tandard$', '', s)
 s = re.sub(r'[-_ .]?[Dd]ecrypted$', '', s)
 s = re.sub(r'[-_ .]?[Pp]iratelegit$', '', s)
+s = re.sub(r'[-_ .]?\[b\]$', '', s)
 am = re.match(r'^(The|An|A) ', s, re.I)
 if am:
     art = am.group(1)

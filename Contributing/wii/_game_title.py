@@ -1,36 +1,56 @@
 import re, unicodedata, sys
+import xml.etree.ElementTree as ET
 
-s = sys.argv[1]
-s = unicodedata.normalize('NFKD', s)
-s = ''.join(c for c in s if not unicodedata.combining(c))
-s = s.encode('ascii', 'ignore').decode()
-# Strip TitleID prefix
-s = re.sub(r'^0001[0-9A-Fa-f]{12}[-_ ]?', '', s)
+# Args: game_id, wiitdb_path
+game_id  = sys.argv[1]
+db_path  = sys.argv[2]
 
-# Strip extension (known ROM/audio types only, to avoid eating dots mid-title)
-s = re.sub(r'\.(rvz|iso|wbfs|gcm|wav)$', '', s, flags=re.I)
+tree = ET.parse(db_path)
+root = tree.getroot()
 
-# Strip trailing noise tags
-s = re.sub(r'[-_ .]?[Ss]tandard$', '', s)
-s = re.sub(r'[-_ .]?[Dd]ecrypted$', '', s)
-s = re.sub(r'[-_ .]?[Pp]iratelegit$', '', s)
+game = root.find(f".//game/id[.='{game_id}']/..")
+if game is None:
+    sys.stderr.write(f"Game ID {game_id} not found in wiitdb.xml\n")
+    sys.exit(1)
 
-# Strip parentheticals (regions, revisions, etc.)
-s = re.sub(r'\s*\([^)]*\)', '', s)
-s = s.strip()
+raw_title = game.findtext("locale[@lang='EN']/title") or game.findtext("title") or ""
 
-# Move leading article: "The X - Y" -> "X, The - Y"
-am = re.match(r'^(The|An|A) ', s, re.I)
-if am:
-    art = am.group(1)
-    rest = s[am.end():]
-    di = rest.find(' - ')
-    if di >= 0:
-        s = rest[:di] + ', ' + art + ' - ' + rest[di+3:]
-    else:
-        s = rest + ', ' + art
+ARTICLES      = {"the", "a", "an"}
+LOWERCASE_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor",
+                   "on", "at", "to", "by", "in", "of", "up", "as", "is"}
+UPPERCASE_WORDS = {"hd", "rpg", "ii", "iii", "iv", "vi", "vii", "viii",
+                   "ix", "xi", "xii", "xiii", "npc", "dlc", "usa", "eu", "u"}
 
-# Clean up any double spaces
-s = re.sub(r'  +', ' ', s).strip()
+def smart_title_case(s):
+    words = s.split(" ")
+    result = []
+    for i, word in enumerate(words):
+        lower = word.lower()
+        if lower in UPPERCASE_WORDS:
+            result.append(word.upper())
+        elif i == 0 or lower not in LOWERCASE_WORDS:
+            cased = word.capitalize()
+            if word.endswith("U") and len(word) > 1:
+                cased = cased[:-1] + "U"
+            result.append(cased)
+        else:
+            result.append(lower)
+    return " ".join(result)
 
-print(s)
+def move_article(title):
+    words = title.split(" ", 1)
+    if len(words) > 1 and words[0].lower() in ARTICLES:
+        return f"{words[1]}, {words[0]}"
+    return title
+
+# GameTDB uses ": " as title/subtitle separator
+parts = [smart_title_case(p.strip()) for p in raw_title.split(": ", 1) if p.strip()]
+
+if len(parts) == 2:
+    human = f"{move_article(parts[0])} - {parts[1]}"
+elif len(parts) == 1:
+    human = move_article(parts[0])
+else:
+    human = raw_title.strip()
+
+print(human)

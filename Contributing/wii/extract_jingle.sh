@@ -21,6 +21,8 @@ case "$(uname)" in
         ;;
 esac
 
+WIITDB="$SCRIPT_DIR/tools/wiitdb.xml"
+
 if [ ! -x "$TOOL_DOLPHIN" ]; then
     echo "dolphin-tool not found or not executable at: $TOOL_DOLPHIN"
     exit 1
@@ -33,11 +35,16 @@ if [ ! -x "$VGM" ]; then
     echo "vgmstream-cli not found or not executable at: $VGM"
     exit 1
 fi
+if [ ! -f "$WIITDB" ]; then
+    echo "wiitdb.xml not found at: $WIITDB"
+    exit 1
+fi
 
 if ! command -v python3 >/dev/null 2>&1; then
     echo "python3 could not be found. Please install python3."
     exit 1
 fi
+
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 JINGLES_DIR="$REPO_ROOT/jingles/wii"
 INDEX_JSON="$REPO_ROOT/index.json"
@@ -47,8 +54,6 @@ mkdir -p "$JINGLES_DIR"
 
 for ROM in "$GAMES_DIR"/*.rvz "$GAMES_DIR"/*.iso; do
     echo "Processing $ROM..."
-    BASENAME="${ROM%.*}"
-    BASENAME="$(basename "$BASENAME")"
 
     tmpdir=$(mktemp -d)
     bnr_dir="$tmpdir/bnr_extract"
@@ -56,11 +61,11 @@ for ROM in "$GAMES_DIR"/*.rvz "$GAMES_DIR"/*.iso; do
 
     "$TOOL_DOLPHIN" extract -i "$ROM" -s opening.bnr -o "$bnr_dir" > /dev/null
 
-    #a bunch of wii games have an annoying header that needs to be clipped before wszst can handle them. tools that can handle these files with
-    #the header do exist, but none of them are scriptable to my knowledge.
+    # A bunch of Wii games have an annoying header that needs to be clipped before wszst can handle them.
     offset=$(LC_ALL=C grep -obam 1 $'\x55\xaa\x38\x2d' "$bnr" | LC_ALL=C head -1 | LC_ALL=C cut -d: -f1) > /dev/null
     if [[ -z "$offset" ]]; then
-        echo "Could not find U8 header, skipping."
+        echo "  Could not find U8 header, skipping."
+        rm -rf "$tmpdir"
         continue
     fi
 
@@ -74,56 +79,95 @@ for ROM in "$GAMES_DIR"/*.rvz "$GAMES_DIR"/*.iso; do
         rm -rf "$tmpdir"
         continue
     fi
-    
-    # Compute the sanitized filename (slug) and human-readable game title in one awk pass
-    read -r FINAL GAME_TITLE < <(
-        printf '%s\n' "$BASENAME" \
-        | iconv -f utf-8 -t ascii//TRANSLIT \
-        | awk '
-        function trim(s) { gsub(/^ +| +$/, "", s); return s }
-        {
-            s=$0
 
-            # 1. Strip TitleID prefix
-            sub(/^0001[0-9A-Fa-f]{12}[-_ ]?/, "", s)
+    DOLPHIN_HEADER=$("$TOOL_DOLPHIN" header -i "$ROM")
+    read -r FINAL GAME_TITLE < <(python3 - "$WIITDB" "$DOLPHIN_HEADER" <<'PYEOF'
+import sys, re, unicodedata
+import xml.etree.ElementTree as ET
 
-            # 2. Strip trailing noise tags (before the extension, which is already gone)
-            sub(/[-_ .]?[Ss]tandard$/, "", s)
-            sub(/[-_ .]?[Dd]ecrypted$/, "", s)
-            sub(/[-_ .]?[Pp]iratelegit$/, "", s)
+db_path = sys.argv[1]
+header_text = sys.argv[2]
 
-            # 3. Strip parenthetical regions/revisions for both outputs
-            gsub(/\([^)]*\)/, "", s)
-            s = trim(s)
+game_id = None
+for line in header_text.splitlines():
+    if line.startswith("Game ID:"):
+        game_id = line.split(":", 1)[1].strip()
+        break
 
-            # 4. Move leading article — on the human-readable copy, before slugifying
-            human = s
-            if (match(human, /^(The|An|A) /)) {
-                art  = substr(human, 1, RLENGTH-1)
-                rest = substr(human, RLENGTH+1)
-                rest = trim(rest)
-                dash = index(rest, " - ")
-                if (dash > 0) {
-                    human = substr(rest,1,dash-1) ", " art " - " substr(rest,dash+3)
-                } else {
-                    human = rest ", " art
-                }
-            }
-            # Clean up any double spaces left after stripping parens
-            gsub(/ {2,}/, " ", human)
-            human = trim(human)
+if not game_id:
+    sys.stderr.write("Could not extract Game ID\n")
+    sys.exit(1)
 
-            # 5. Slug: build from the article-moved human string
-            slug = human
-            gsub(/\047/, "", slug)           # apostrophes
-            gsub(/ *- */, "-", slug)
-            gsub(/ /, "-", slug)
-            gsub(/[^A-Za-z0-9-]+/, "", slug)
-            gsub(/-+/, "-", slug)
-            gsub(/^-|-$/, "", slug)
+tree = ET.parse(db_path)
+root = tree.getroot()
 
-            print tolower(slug) ".wav", human
-        }')
+game = root.find(f".//game/id[.='{game_id}']/..")
+if game is None:
+    sys.stderr.write(f"Game ID {game_id} not found in wiitdb.xml\n")
+    sys.exit(1)
+
+raw_title = game.findtext("locale[@lang='EN']/title") or game.findtext("title") or ""
+
+ARTICLES = {"the", "a", "an"}
+LOWERCASE_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor",
+                   "on", "at", "to", "by", "in", "of", "up", "as", "is"}
+UPPERCASE_WORDS = {"hd", "rpg", "ii", "iii", "iv", "vi", "vii", "viii",
+                   "ix", "xi", "xii", "xiii", "npc", "dlc", "usa", "eu", "u"}
+
+def smart_title_case(s):
+    words = s.split(" ")
+    result = []
+    for i, word in enumerate(words):
+        lower = word.lower()
+        if lower in UPPERCASE_WORDS:
+            result.append(word.upper())
+        elif i == 0 or lower not in LOWERCASE_WORDS:
+            cased = word.capitalize()
+            if word.endswith("U") and len(word) > 1:
+                cased = cased[:-1] + "U"
+            result.append(cased)
+        else:
+            result.append(lower)
+    return " ".join(result)
+
+def move_article(title):
+    words = title.split(" ", 1)
+    if len(words) > 1 and words[0].lower() in ARTICLES:
+        return f"{words[1]}, {words[0]}"
+    return title
+
+def slugify(s):
+    s = unicodedata.normalize("NFKD", s)
+    s = s.encode("ascii", "ignore").decode("ascii")
+    s = s.lower()
+    s = re.sub(r"'", "", s)
+    s = re.sub(r"\s*-\s*", "-", s)
+    s = re.sub(r"\s+", "-", s)
+    s = re.sub(r"[^a-z0-9-]", "", s)
+    s = re.sub(r"-+", "-", s)
+    s = s.strip("-")
+    return s
+
+# GameTDB uses ": " as title/subtitle separator
+parts = [smart_title_case(p.strip()) for p in raw_title.split(": ", 1) if p.strip()]
+
+if len(parts) == 2:
+    human = f"{move_article(parts[0])} - {parts[1]}"
+elif len(parts) == 1:
+    human = move_article(parts[0])
+else:
+    human = raw_title.strip()
+
+slug = slugify(human) + ".wav"
+print(f"{slug}\t{human}")
+PYEOF
+    )
+
+    if [[ -z "$FINAL" ]]; then
+        echo "  Could not determine title, skipping."
+        rm -rf "$tmpdir"
+        continue
+    fi
 
     "$VGM" "$sound" -o "$JINGLES_DIR/$FINAL" > /dev/null
 
@@ -131,7 +175,6 @@ for ROM in "$GAMES_DIR"/*.rvz "$GAMES_DIR"/*.iso; do
 
     echo "Saved: $FINAL  (Game: $GAME_TITLE)"
 
-    # --- Update index.json ---
     JINGLE_PATH="jingles/wii/$FINAL"
 
     python3 - "$INDEX_JSON" "$GAME_TITLE" "$JINGLE_PATH" <<'PYEOF'
@@ -146,15 +189,9 @@ except FileNotFoundError:
     data = {"name": "Red's Jingles Pack", "wii": []}
 
 wii = data.get("wii", [])
-
-# Remove any existing entry for this file path (re-run idempotency)
 wii = [e for e in wii if e.get("file") != jingle_path]
-
 wii.append({"name": game_title, "file": jingle_path})
-
-# Sort alphabetically by game title (case-insensitive)
 wii.sort(key=lambda e: e["name"].lower())
-
 data["wii"] = wii
 
 with open(index_path, 'w', encoding='utf-8') as f:
@@ -163,5 +200,7 @@ with open(index_path, 'w', encoding='utf-8') as f:
 
 print(f"index.json updated: {game_title}")
 PYEOF
+
+echo "--------------------------------------"
 
 done

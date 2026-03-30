@@ -79,6 +79,7 @@ with open('banner_dir/banner.bcwav','wb') as f:
             sub(/[-_ .]?[Ss]tandard$/, "", s)
             sub(/[-_ .]?[Dd]ecrypted$/, "", s)
             sub(/[-_ .]?[Pp]iratelegit$/, "", s)
+	    sub(/[-_ .]?\[b\]$/, "", s)
 
             # 3. Strip parenthetical regions/revisions for both outputs
             gsub(/\([^)]*\)/, "", s)
