@@ -705,11 +705,13 @@
     },
     {
       "name": "Pokémon Battle Revolution",
-      "file": "jingles/wii/pokemon-battle-revolution.wav"
+      "file": "jingles/wii/pokemon-battle-revolution.wav",
+      "regex": "pok[eé]mon.*battle revolution"
     },
     {
       "name": "Punch-out!!",
-      "file": "jingles/wii/punch-out.wav"
+      "file": "jingles/wii/punch-out.wav",
+      "regex": "punch.?out!*$"
     },
     {
       "name": "Rhythm Heaven Fever",
@@ -735,47 +737,58 @@
   "wiiu": [
     {
       "name": "Affordable Space Adventures",
-      "file": "jingles/wiiu/affordable-space-adventures.wav"
+      "file": "jingles/wiiu/affordable-space-adventures.wav",
+      "regex": "affordable space adventures"
     },
     {
       "name": "Kirby and the Rainbow Curse",
-      "file": "jingles/wiiu/kirby-and-the-rainbow-curse.wav"
+      "file": "jingles/wiiu/kirby-and-the-rainbow-curse.wav",
+      "regex": "kirby.*rainbow curse"
     },
     {
       "name": "Legend of Zelda, The - Breath of the Wild",
-      "file": "jingles/wiiu/legend-of-zelda-the-breath-of-the-wild.wav"
+      "file": "jingles/wiiu/legend-of-zelda-the-breath-of-the-wild.wav",
+      "regex": "zelda.*breath of the wild|breath of the wild"
     },
     {
       "name": "Legend of Zelda, The - The Wind Waker HD",
-      "file": "jingles/wiiu/legend-of-zelda-the-the-wind-waker-hd.wav"
+      "file": "jingles/wiiu/legend-of-zelda-the-the-wind-waker-hd.wav",
+      "regex": "zelda.*wind waker.*hd|wind waker.*hd"
     },
     {
       "name": "Legend of Zelda, The - Twilight Princess HD",
-      "file": "jingles/wiiu/legend-of-zelda-the-twilight-princess-hd.wav"
+      "file": "jingles/wiiu/legend-of-zelda-the-twilight-princess-hd.wav",
+      "regex": "zelda.*twilight princess.*hd|twilight princess.*hd"
     },
     {
       "name": "Nintendo Land",
-      "file": "jingles/wiiu/nintendo-land.wav"
+      "file": "jingles/wiiu/nintendo-land.wav",
+      "regex": "nintendo land"
     },
     {
       "name": "Paper Mario Color Splash",
-      "file": "jingles/wiiu/paper-mario-color-splash.wav"
+      "file": "jingles/wiiu/paper-mario-color-splash.wav",
+      "regex": "paper mario.*color splash"
     },
     {
       "name": "Splatoon",
-      "file": "jingles/wiiu/splatoon.wav"
+      "file": "jingles/wiiu/splatoon.wav",
+      "regex": "^splatoon$"
     },
     {
       "name": "Super Mario Maker",
-      "file": "jingles/wiiu/super-mario-maker.wav"
+      "file": "jingles/wiiu/super-mario-maker.wav",
+      "regex": "super mario maker(?! 2)"
     },
     {
       "name": "Yoshi's Woolly World",
-      "file": "jingles/wiiu/yoshis-woolly-world.wav"
+      "file": "jingles/wiiu/yoshis-woolly-world.wav",
+      "regex": "yoshi'?s woolly world"
     },
     {
       "name": "ZombiU",
-      "file": "jingles/wiiu/zombiu.wav"
+      "file": "jingles/wiiu/zombiu.wav",
+      "regex": "^zombiu$"
     }
   ]
 }
