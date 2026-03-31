@@ -45,9 +45,8 @@ if not exist "%WIITDB%" (
 )
 
 pushd "%~dp0"
-set "SCRIPT_DIR=%CD%"
-cd ..\..
-set "REPO_ROOT=%CD%"
+set "SCRIPT_DIR=%~dp0"
+for %%D in ("%~dp0..\.." ) do set "REPO_ROOT=%%~fD"
 popd
 
 set "JINGLES_DIR=%REPO_ROOT%\jingles\wii"
@@ -62,22 +61,34 @@ for %%f in ("%GAMES_DIR%\*.rvz" "%GAMES_DIR%\*.iso") do (
 
     if not exist "%TEMP%\wii_bnr_extract" mkdir "%TEMP%\wii_bnr_extract"
 
-    "%TOOL_DOLPHIN%" extract -i "%%f" -s opening.bnr -o "%TEMP%\wii_bnr_extract" >nul 2>&1
+    "%TOOL_DOLPHIN%" extract -i "%%f" -s opening.bnr -o "%TEMP%\wii_bnr_extract"
 
     if exist "%TEMP%\wii_bnr_extract\DATA\files\opening.bnr" (
         python "%~dp0_extract_arc.py" "%TEMP%\wii_bnr_extract\DATA\files\opening.bnr" "%TEMP%\wii_opening.arc"
 
         if exist "%TEMP%\wii_opening.arc" (
             if exist "%TEMP%\wii_bnr_out" rd /s /q "%TEMP%\wii_bnr_out"
-            "%TOOL_WSZST%" extract "%TEMP%\wii_opening.arc" --dest "%TEMP%\wii_bnr_out" >nul 2>&1
+            "%TOOL_WSZST%" extract "%TEMP%\wii_opening.arc" --dest "%TEMP%\wii_bnr_out"
 
-            call :find_sound "%TEMP%\wii_bnr_out" SOUND_FILE
+            :: find_sound writes result to a temp file to survive endlocal cleanly
+            call :find_sound "%TEMP%\wii_bnr_out"
+            set "SOUND_FILE="
+            set /p SOUND_FILE=<"%TEMP%\wii_sound_path.txt"
+            if exist "%TEMP%\wii_sound_path.txt" del "%TEMP%\wii_sound_path.txt"
+
             if defined SOUND_FILE (
-                :: Get Game ID from dolphin-tool header
+                :: Write header to temp file to avoid for /f inline quoting issues
+                "%TOOL_DOLPHIN%" header -i "%%f" > "%TEMP%\wii_header.txt" 2>nul
+
+                :: Parse Game ID line, strip leading space from value
                 set "GAME_ID="
-                for /f "tokens=2 delims=: " %%g in ('"%TOOL_DOLPHIN%" header -i "%%f" ^| findstr /i "Game ID"') do (
-                    set "GAME_ID=%%g"
+                for /f "usebackq tokens=1,* delims=:" %%k in ("%TEMP%\wii_header.txt") do (
+                    if /i "%%k"=="Game ID" (
+                        set "_RAW=%%l"
+                        call set "GAME_ID=%%_RAW: =%%"
+                    )
                 )
+                if exist "%TEMP%\wii_header.txt" del "%TEMP%\wii_header.txt"
 
                 setlocal enabledelayedexpansion
                 if not defined GAME_ID (
@@ -109,15 +120,17 @@ pause
 goto :eof
 
 :find_sound
-setlocal
+:: Writes the first sound.bin found under %1 to %TEMP%\wii_sound_path.txt
+:: Using a file avoids endlocal stripping the value in the caller's scope.
 set "SEARCH_DIR=%~1"
-set "RESULT="
+if exist "%TEMP%\wii_sound_path.txt" del "%TEMP%\wii_sound_path.txt"
 for /r "%SEARCH_DIR%" %%s in (sound.bin) do (
     if exist "%%s" (
-        if not defined RESULT set "RESULT=%%s"
+        if not exist "%TEMP%\wii_sound_path.txt" (
+            echo %%s> "%TEMP%\wii_sound_path.txt"
+        )
     )
 )
-endlocal & set "%~2=%RESULT%"
 goto :eof
 
 :process_rom
@@ -125,17 +138,19 @@ setlocal enabledelayedexpansion
 set "GAME_ID=%~1"
 set "SOUND_FILE=%~2"
 
-for /f "delims=" %%t in ('python "%~dp0_game_title.py" "!GAME_ID!" "!WIITDB!"') do set "GAME_TITLE=%%t"
+:: stderr to nul - empty GAME_TITLE is the error signal
+for /f "delims=" %%t in ('python "%~dp0_game_title.py" "!GAME_ID!" "!WIITDB!" 2^>nul') do set "GAME_TITLE=%%t"
 if not defined GAME_TITLE (
     echo [Skip] Game ID !GAME_ID! not found in wiitdb.xml
     endlocal
     goto :eof
 )
 
-for /f "delims=" %%s in ('python "%~dp0_sanitize.py" "!GAME_TITLE!"') do set "FINAL=%%s"
-
-"%VGM%" "!SOUND_FILE!" -o "!JINGLES_DIR!\!FINAL!" >nul 2>&1
-echo [Success] !GAME_TITLE! -> !FINAL!
+for /f "delims=" %%s in ('python "%~dp0_sanitize.py" "!GAME_TITLE!" 2^>nul') do set "FINAL=%%s"
+echo [Debug] VGM output path: "!JINGLES_DIR!\!FINAL!"
+"%VGM%" "!SOUND_FILE!" -o "!JINGLES_DIR!\!FINAL!"
+echo [Debug] vgmstream exit code: !errorlevel!
+echo [Success] !GAME_TITLE! -^> !FINAL!
 
 python "%~dp0_update_index.py" "!INDEX_JSON!" "!GAME_TITLE!" "jingles/wii/!FINAL!"
 

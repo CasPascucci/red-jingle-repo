@@ -2,8 +2,8 @@ import re, unicodedata, sys
 import xml.etree.ElementTree as ET
 
 # Args: game_id, wiitdb_path
-game_id  = sys.argv[1]
-db_path  = sys.argv[2]
+game_id = sys.argv[1]
+db_path = sys.argv[2]
 
 tree = ET.parse(db_path)
 root = tree.getroot()
@@ -15,27 +15,7 @@ if game is None:
 
 raw_title = game.findtext("locale[@lang='EN']/title") or game.findtext("title") or ""
 
-ARTICLES      = {"the", "a", "an"}
-LOWERCASE_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor",
-                   "on", "at", "to", "by", "in", "of", "up", "as", "is"}
-UPPERCASE_WORDS = {"hd", "rpg", "ii", "iii", "iv", "vi", "vii", "viii",
-                   "ix", "xi", "xii", "xiii", "npc", "dlc", "usa", "eu", "u"}
-
-def smart_title_case(s):
-    words = s.split(" ")
-    result = []
-    for i, word in enumerate(words):
-        lower = word.lower()
-        if lower in UPPERCASE_WORDS:
-            result.append(word.upper())
-        elif i == 0 or lower not in LOWERCASE_WORDS:
-            cased = word.capitalize()
-            if word.endswith("U") and len(word) > 1:
-                cased = cased[:-1] + "U"
-            result.append(cased)
-        else:
-            result.append(lower)
-    return " ".join(result)
+ARTICLES = {"the", "a", "an"}
 
 def move_article(title):
     words = title.split(" ", 1)
@@ -44,7 +24,7 @@ def move_article(title):
     return title
 
 # GameTDB uses ": " as title/subtitle separator
-parts = [smart_title_case(p.strip()) for p in raw_title.split(": ", 1) if p.strip()]
+parts = [p.strip() for p in raw_title.split(": ", 1) if p.strip()]
 
 if len(parts) == 2:
     human = f"{move_article(parts[0])} - {parts[1]}"

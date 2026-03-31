@@ -48,7 +48,6 @@ fi
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 JINGLES_DIR="$REPO_ROOT/jingles/wii"
 INDEX_JSON="$REPO_ROOT/index.json"
-
 GAMES_DIR="$SCRIPT_DIR/games"
 mkdir -p "$JINGLES_DIR"
 
@@ -61,7 +60,6 @@ for ROM in "$GAMES_DIR"/*.rvz "$GAMES_DIR"/*.iso; do
 
     "$TOOL_DOLPHIN" extract -i "$ROM" -s opening.bnr -o "$bnr_dir" > /dev/null
 
-    # A bunch of Wii games have an annoying header that needs to be clipped before wszst can handle them.
     offset=$(LC_ALL=C grep -obam 1 $'\x55\xaa\x38\x2d' "$bnr" | LC_ALL=C head -1 | LC_ALL=C cut -d: -f1) > /dev/null
     if [[ -z "$offset" ]]; then
         echo "  Could not find U8 header, skipping."
@@ -81,11 +79,12 @@ for ROM in "$GAMES_DIR"/*.rvz "$GAMES_DIR"/*.iso; do
     fi
 
     DOLPHIN_HEADER=$("$TOOL_DOLPHIN" header -i "$ROM")
+
     read -r FINAL GAME_TITLE < <(python3 - "$WIITDB" "$DOLPHIN_HEADER" <<'PYEOF'
 import sys, re, unicodedata
 import xml.etree.ElementTree as ET
 
-db_path = sys.argv[1]
+db_path     = sys.argv[1]
 header_text = sys.argv[2]
 
 game_id = None
@@ -109,26 +108,6 @@ if game is None:
 raw_title = game.findtext("locale[@lang='EN']/title") or game.findtext("title") or ""
 
 ARTICLES = {"the", "a", "an"}
-LOWERCASE_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor",
-                   "on", "at", "to", "by", "in", "of", "up", "as", "is"}
-UPPERCASE_WORDS = {"hd", "rpg", "ii", "iii", "iv", "vi", "vii", "viii",
-                   "ix", "xi", "xii", "xiii", "npc", "dlc", "usa", "eu", "u"}
-
-def smart_title_case(s):
-    words = s.split(" ")
-    result = []
-    for i, word in enumerate(words):
-        lower = word.lower()
-        if lower in UPPERCASE_WORDS:
-            result.append(word.upper())
-        elif i == 0 or lower not in LOWERCASE_WORDS:
-            cased = word.capitalize()
-            if word.endswith("U") and len(word) > 1:
-                cased = cased[:-1] + "U"
-            result.append(cased)
-        else:
-            result.append(lower)
-    return " ".join(result)
 
 def move_article(title):
     words = title.split(" ", 1)
@@ -148,8 +127,8 @@ def slugify(s):
     s = s.strip("-")
     return s
 
-# GameTDB uses ": " as title/subtitle separator
-parts = [smart_title_case(p.strip()) for p in raw_title.split(": ", 1) if p.strip()]
+# GameTDB uses ": " as title/subtitle separator — trust casing as-is
+parts = [p.strip() for p in raw_title.split(": ", 1) if p.strip()]
 
 if len(parts) == 2:
     human = f"{move_article(parts[0])} - {parts[1]}"
@@ -170,7 +149,6 @@ PYEOF
     fi
 
     "$VGM" "$sound" -o "$JINGLES_DIR/$FINAL" > /dev/null
-
     rm -rf "$tmpdir"
 
     echo "Saved: $FINAL  (Game: $GAME_TITLE)"
@@ -200,7 +178,5 @@ with open(index_path, 'w', encoding='utf-8') as f:
 
 print(f"index.json updated: {game_title}")
 PYEOF
-
-echo "--------------------------------------"
 
 done

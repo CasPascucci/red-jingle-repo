@@ -88,7 +88,7 @@ if not defined GAME_TITLE (
 for /f "delims=" %%s in ('python "%~dp0_sanitize.py" "!GAME_TITLE!"') do set "FINAL=%%s"
 
 "%VGM%" "!BTSND!" -o "!JINGLES_DIR!\!FINAL!" >nul 2>&1
-echo [Success] !GAME_TITLE! -> !FINAL!
+echo [Success] !GAME_TITLE! -^> !FINAL!
 
 python "%~dp0_update_index.py" "!INDEX_JSON!" "!GAME_TITLE!" "jingles/wiiu/!FINAL!"
 

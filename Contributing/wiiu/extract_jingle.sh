@@ -4,7 +4,6 @@ shopt -s nullglob
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Select bundled tools based on OS
 case "$(uname)" in
     Darwin)
         TOOL_WUA="$SCRIPT_DIR/tools/macos/wua_extract_file"
@@ -53,11 +52,9 @@ import xml.etree.ElementTree as ET
 
 ARTICLES = {"the", "a", "an"}
 
-# Words that should never be title-cased (unless first word)
 LOWERCASE_WORDS = {"a", "an", "the", "and", "but", "or", "for", "nor",
                    "on", "at", "to", "by", "in", "of", "up", "as", "is"}
 
-# Words that should always stay uppercase
 UPPERCASE_WORDS = {"hd", "rpg", "ii", "iii", "iv", "vi", "vii", "viii",
                    "ix", "xi", "xii", "xiii", "npc", "dlc", "usa", "eu", "u"}
 
@@ -69,8 +66,10 @@ def smart_title_case(s):
         if lower in UPPERCASE_WORDS:
             result.append(word.upper())
         elif i == 0 or lower not in LOWERCASE_WORDS:
-            # Preserve trailing U in words like ZombiU
-            cased = word.capitalize()
+            # Only uppercase the first char, preserve the rest as-is.
+            # This handles Punch-Out!! (no lowercasing after hyphen),
+            # ZombiU (trailing U preserved), NiGHTS (not mangled).
+            cased = word[0].upper() + word[1:] if word else word
             if word.endswith("U") and len(word) > 1:
                 cased = cased[:-1] + "U"
             result.append(cased)
@@ -79,7 +78,6 @@ def smart_title_case(s):
     return " ".join(result)
 
 def move_article(title):
-    """Move leading article to end: 'The Foo' -> 'Foo, The'"""
     words = title.split(" ", 1)
     if len(words) > 1 and words[0].lower() in ARTICLES:
         return f"{words[1]}, {words[0]}"
@@ -89,11 +87,11 @@ def slugify(s):
     s = unicodedata.normalize("NFKD", s)
     s = s.encode("ascii", "ignore").decode("ascii")
     s = s.lower()
-    s = re.sub(r"'", "", s)           # strip apostrophes
-    s = re.sub(r"\s*-\s*", "-", s)   # normalize dashes
-    s = re.sub(r"\s+", "-", s)       # spaces to dashes
-    s = re.sub(r"[^a-z0-9-]", "", s) # strip everything else
-    s = re.sub(r"-+", "-", s)        # collapse multiple dashes
+    s = re.sub(r"'", "", s)
+    s = re.sub(r"\s*-\s*", "-", s)
+    s = re.sub(r"\s+", "-", s)
+    s = re.sub(r"[^a-z0-9-]", "", s)
+    s = re.sub(r"-+", "-", s)
     s = s.strip("-")
     return s
 
@@ -102,7 +100,6 @@ root = tree.getroot()
 
 longname = root.findtext("longname_en") or ""
 
-# longname uses a newline to separate title from subtitle
 parts = [smart_title_case(p.strip()) for p in longname.strip().split("\n") if p.strip()]
 
 if len(parts) == 2:
@@ -114,8 +111,6 @@ else:
     human = longname.strip()
 
 slug = slugify(human) + ".wav"
-
-# Tab-separated so read -r splits correctly even if title contains spaces
 print(f"{slug}\t{human}")
 PYEOF
     )
@@ -139,15 +134,9 @@ except FileNotFoundError:
     data = {"name": "Red's Jingles Pack", "wiiu": []}
 
 wiiu = data.get("wiiu", [])
-
-# Remove any existing entry for this file path (re-run idempotency)
 wiiu = [e for e in wiiu if e.get("file") != jingle_path]
-
 wiiu.append({"name": game_title, "file": jingle_path})
-
-# Sort alphabetically by game title (case-insensitive)
 wiiu.sort(key=lambda e: e["name"].lower())
-
 data["wiiu"] = wiiu
 
 with open(index_path, 'w', encoding='utf-8') as f:

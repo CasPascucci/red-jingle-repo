@@ -699,9 +699,8 @@
       "regex": "new super mario bros\\.?.*wii(?!\\s*u)|nsmb.*wii(?!\\s*u)"
     },
     {
-      "name": "Nights - Journey of Dreams",
-      "file": "jingles/wii/nights-journey-of-dreams.wav",
-      "regex": "nights.*journey of dreams"
+      "name": "NiGHTS - Journey of Dreams",
+      "file": "jingles/wii/nights-journey-of-dreams.wav"
     },
     {
       "name": "Pokémon Battle Revolution",
@@ -709,9 +708,8 @@
       "regex": "pok[eé]mon.*battle revolution"
     },
     {
-      "name": "Punch-out!!",
-      "file": "jingles/wii/punch-out.wav",
-      "regex": "punch.?out!*$"
+      "name": "Punch-Out!!",
+      "file": "jingles/wii/punch-out.wav"
     },
     {
       "name": "Rhythm Heaven Fever",

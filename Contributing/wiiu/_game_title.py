@@ -1,7 +1,6 @@
 import re, unicodedata, sys
 import xml.etree.ElementTree as ET
 
-# Arg: path to meta.xml
 xml_path = sys.argv[1]
 
 tree = ET.parse(xml_path)
@@ -23,7 +22,10 @@ def smart_title_case(s):
         if lower in UPPERCASE_WORDS:
             result.append(word.upper())
         elif i == 0 or lower not in LOWERCASE_WORDS:
-            cased = word.capitalize()
+            # Only uppercase the first char, preserve the rest as-is.
+            # This handles Punch-Out!! (no lowercasing after hyphen),
+            # ZombiU (trailing U preserved), NiGHTS (not mangled).
+            cased = word[0].upper() + word[1:] if word else word
             if word.endswith("U") and len(word) > 1:
                 cased = cased[:-1] + "U"
             result.append(cased)
@@ -37,7 +39,6 @@ def move_article(title):
         return f"{words[1]}, {words[0]}"
     return title
 
-# longname_en uses a newline to separate title from subtitle
 parts = [smart_title_case(p.strip()) for p in longname.strip().split("\n") if p.strip()]
 
 if len(parts) == 2:
