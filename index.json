@@ -700,7 +700,8 @@
     },
     {
       "name": "NiGHTS - Journey of Dreams",
-      "file": "jingles/wii/nights-journey-of-dreams.wav"
+      "file": "jingles/wii/nights-journey-of-dreams.wav",
+      "regex": "nights.*journey of dreams"
     },
     {
       "name": "Pokémon Battle Revolution",
@@ -709,7 +710,8 @@
     },
     {
       "name": "Punch-Out!!",
-      "file": "jingles/wii/punch-out.wav"
+      "file": "jingles/wii/punch-out.wav",
+      "regex": "punch.?out!{0,2}"
     },
     {
       "name": "Rhythm Heaven Fever",
