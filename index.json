@@ -19,14 +19,30 @@
       "regex": "the alliance alive|alliance alive"
     },
     {
+      "name": "Angry Birds Star Wars",
+      "file": "jingles/n3ds/angry-birds-star-wars.wav"
+    },
+    {
+      "name": "Angry Birds Trilogy",
+      "file": "jingles/n3ds/angry-birds-trilogy.wav"
+    },
+    {
       "name": "Animal Crossing - New Leaf",
       "file": "jingles/n3ds/animal-crossing-new-leaf.wav",
       "regex": "animal crossing.*new leaf"
     },
     {
+      "name": "Asphalt 3D",
+      "file": "jingles/n3ds/asphalt-3d.wav"
+    },
+    {
       "name": "Batman - Arkham Origins Blackgate",
       "file": "jingles/n3ds/batman-arkham-origins-blackgate.wav",
       "regex": "batman.*arkham origins.*blackgate"
+    },
+    {
+      "name": "Bit.Trip Saga",
+      "file": "jingles/n3ds/bittrip-saga.wav"
     },
     {
       "name": "BOXBOY!",
@@ -49,9 +65,21 @@
       "regex": "captain toad.*treasure tracker"
     },
     {
+      "name": "Cars 2",
+      "file": "jingles/n3ds/cars-2.wav"
+    },
+    {
       "name": "Castlevania - Lords of Shadow - Mirror of Fate",
       "file": "jingles/n3ds/castlevania-lords-of-shadow-mirror-of-fate.wav",
       "regex": "castlevania.*lords of shadow.*mirror of fate"
+    },
+    {
+      "name": "Cave Story 3D",
+      "file": "jingles/n3ds/cave-story-3d.wav"
+    },
+    {
+      "name": "Chibi-Robo Zip Lash",
+      "file": "jingles/n3ds/chibi-robo-zip-lash.wav"
     },
     {
       "name": "Code Name - S.T.E.A.M.",
@@ -64,6 +92,10 @@
       "regex": "cooking mama.*sweet shop"
     },
     {
+      "name": "Cooking Mama 4 - Kitchen Magic",
+      "file": "jingles/n3ds/cooking-mama-4-kitchen-magic.wav"
+    },
+    {
       "name": "Cooking Mama 5 - Bon Appetit",
       "file": "jingles/n3ds/cooking-mama-5-bon-appetit.wav",
       "regex": "cooking mama 5.*bon appetit"
@@ -74,6 +106,10 @@
       "regex": "culdcept revolt"
     },
     {
+      "name": "Dead or Alive - Dimensions",
+      "file": "jingles/n3ds/dead-or-alive-dimensions.wav"
+    },
+    {
       "name": "Detective Pikachu",
       "file": "jingles/n3ds/detective-pikachu.wav",
       "regex": "detective pikachu"
@@ -82,6 +118,14 @@
       "name": "Dillon's Dead-Heat Breakers",
       "file": "jingles/n3ds/dillons-dead-heat-breakers.wav",
       "regex": "dillon'?s.*dead.?heat.*breakers"
+    },
+    {
+      "name": "Donkey Kong Country Returns 3D",
+      "file": "jingles/n3ds/donkey-kong-country-returns-3d.wav"
+    },
+    {
+      "name": "Doodle Jump Adventures",
+      "file": "jingles/n3ds/doodle-jump-adventures.wav"
     },
     {
       "name": "Dragon Ball Fusions",
@@ -154,6 +198,14 @@
       "regex": "^fantasy life$"
     },
     {
+      "name": "Fast & Furious - Showdown",
+      "file": "jingles/n3ds/fast-furious-showdown.wav"
+    },
+    {
+      "name": "Final Fantasy Explorers",
+      "file": "jingles/n3ds/final-fantasy-explorers.wav"
+    },
+    {
       "name": "Fire Emblem - Awakening",
       "file": "jingles/n3ds/fire-emblem-awakening.wav",
       "regex": "fire.?emblem.*awakening"
@@ -174,6 +226,10 @@
       "regex": "fossil fighters.*frontier"
     },
     {
+      "name": "Garfield Kart",
+      "file": "jingles/n3ds/garfield-kart.wav"
+    },
+    {
       "name": "Hatsune Miku - Project Mirai DX",
       "file": "jingles/n3ds/hatsune-miku-project-mirai-dx.wav",
       "regex": "hatsune miku.*project mirai dx"
@@ -182,6 +238,14 @@
       "name": "Hey! Pikmin",
       "file": "jingles/n3ds/hey-pikmin.wav",
       "regex": "hey.?pikmin"
+    },
+    {
+      "name": "Hot Wheels - World's Best Driver",
+      "file": "jingles/n3ds/hot-wheels-worlds-best-driver.wav"
+    },
+    {
+      "name": "Hyrule Warriors Legends",
+      "file": "jingles/n3ds/hyrule-warriors-legends.wav"
     },
     {
       "name": "Inazuma Eleven 3 - Team Ogre Attacks",
@@ -217,6 +281,10 @@
       "name": "Kirby - Triple Deluxe",
       "file": "jingles/n3ds/kirby-triple-deluxe.wav",
       "regex": "kirby.*triple deluxe"
+    },
+    {
+      "name": "Kirby Battle Royale",
+      "file": "jingles/n3ds/kirby-battle-royale.wav"
     },
     {
       "name": "Kirby's Extra Epic Yarn",
@@ -279,9 +347,33 @@
       "regex": "mario.*luigi.*superstar saga"
     },
     {
+      "name": "Mario & Sonic at the London 2012 Olympic Games",
+      "file": "jingles/n3ds/mario-sonic-at-the-london-2012-olympic-games.wav"
+    },
+    {
+      "name": "Mario & Sonic at the Rio 2016 Olympic Games",
+      "file": "jingles/n3ds/mario-sonic-at-the-rio-2016-olympic-games.wav"
+    },
+    {
+      "name": "Mario Golf - World Tour",
+      "file": "jingles/n3ds/mario-golf-world-tour.wav"
+    },
+    {
       "name": "Mario Kart 7",
       "file": "jingles/n3ds/mario-kart-7.wav",
       "regex": "mario kart 7|mk7"
+    },
+    {
+      "name": "Mario Party - Island Tour",
+      "file": "jingles/n3ds/mario-party-island-tour.wav"
+    },
+    {
+      "name": "Mario Party - Star Rush",
+      "file": "jingles/n3ds/mario-party-star-rush.wav"
+    },
+    {
+      "name": "Mario Sports Superstars",
+      "file": "jingles/n3ds/mario-sports-superstars.wav"
     },
     {
       "name": "Metal Gear Solid 3D - Snake Eater",
@@ -294,9 +386,29 @@
       "regex": "metroid.*samus returns"
     },
     {
+      "name": "Metroid Prime - Federation Force",
+      "file": "jingles/n3ds/metroid-prime-federation-force.wav"
+    },
+    {
+      "name": "Miitopia",
+      "file": "jingles/n3ds/miitopia.wav"
+    },
+    {
+      "name": "Minecraft - New Nintendo 3DS Edition",
+      "file": "jingles/n3ds/minecraft-new-nintendo-3ds-edition.wav"
+    },
+    {
+      "name": "Need for Speed - The Run",
+      "file": "jingles/n3ds/need-for-speed-the-run.wav"
+    },
+    {
       "name": "New Super Mario Bros. 2",
       "file": "jingles/n3ds/new-super-mario-bros-2.wav",
       "regex": "new super mario bros\\.? 2|nsmb2"
+    },
+    {
+      "name": "Nintendo Pocket Football Club",
+      "file": "jingles/n3ds/nintendo-pocket-football-club.wav"
     },
     {
       "name": "Paper Mario - Sticker Star",
@@ -312,6 +424,10 @@
       "name": "Persona Q2 - New Cinema Labyrinth",
       "file": "jingles/n3ds/persona-q2-new-cinema-labyrinth.wav",
       "regex": "persona q2.*new cinema.*labyrinth"
+    },
+    {
+      "name": "Pilotwings Resort",
+      "file": "jingles/n3ds/pilotwings-resort.wav"
     },
     {
       "name": "Pokemon Alpha Sapphire",
@@ -334,6 +450,14 @@
       "regex": "pok[eé]mon.*omega ruby"
     },
     {
+      "name": "Pokemon Rumble Blast",
+      "file": "jingles/n3ds/pokemon-rumble-blast.wav"
+    },
+    {
+      "name": "Pokemon Rumble World",
+      "file": "jingles/n3ds/pokemon-rumble-world.wav"
+    },
+    {
       "name": "Pokemon Sun",
       "file": "jingles/n3ds/pokemon-sun.wav",
       "regex": "pok[eé]mon sun$"
@@ -349,6 +473,10 @@
       "regex": "pok[eé]mon ultra moon"
     },
     {
+      "name": "Pokemon Ultra Sun",
+      "file": "jingles/n3ds/pokemon-ultra-sun.wav"
+    },
+    {
       "name": "Pokemon X",
       "file": "jingles/n3ds/pokemon-x.wav",
       "regex": "pok[eé]mon x$"
@@ -357,6 +485,10 @@
       "name": "Pokemon Y",
       "file": "jingles/n3ds/pokemon-y.wav",
       "regex": "pok[eé]mon y$"
+    },
+    {
+      "name": "Poochy & Yoshi's Woolly World",
+      "file": "jingles/n3ds/poochy-yoshis-woolly-world.wav"
     },
     {
       "name": "Professor Layton and the Azran Legacy",
@@ -434,9 +566,29 @@
       "regex": "shovel knight treasure trove"
     },
     {
+      "name": "Sims 3, The",
+      "file": "jingles/n3ds/sims-3-the.wav"
+    },
+    {
+      "name": "Sims 3, The - Pets",
+      "file": "jingles/n3ds/sims-3-the-pets.wav"
+    },
+    {
+      "name": "Sonic & All-Stars Racing Transformed",
+      "file": "jingles/n3ds/sonic-all-stars-racing-transformed.wav"
+    },
+    {
+      "name": "Sonic Lost World",
+      "file": "jingles/n3ds/sonic-lost-world.wav"
+    },
+    {
       "name": "Star Fox 64 3D",
       "file": "jingles/n3ds/star-fox-64-3d.wav",
       "regex": "star fox 64 3d"
+    },
+    {
+      "name": "Steel Diver",
+      "file": "jingles/n3ds/steel-diver.wav"
     },
     {
       "name": "Stella Glow",
@@ -452,6 +604,10 @@
       "name": "Super Mario Maker for Nintendo 3DS",
       "file": "jingles/n3ds/super-mario-maker-for-nintendo-3ds.wav",
       "regex": "mario maker.*(3ds|nintendo 3ds)"
+    },
+    {
+      "name": "Super Monkey Ball 3D",
+      "file": "jingles/n3ds/super-monkey-ball-3d.wav"
     },
     {
       "name": "Sushi Striker - The Way of Sushido",
@@ -664,9 +820,65 @@
   ],
   "wii": [
     {
+      "name": "Arc Rise Fantasia",
+      "file": "jingles/wii/arc-rise-fantasia.wav"
+    },
+    {
+      "name": "Beat the Beat - Rhythm Paradise",
+      "file": "jingles/wii/beat-the-beat-rhythm-paradise.wav"
+    },
+    {
+      "name": "Call of Duty - Black Ops",
+      "file": "jingles/wii/call-of-duty-black-ops.wav"
+    },
+    {
+      "name": "Call of Duty - Modern Warfare 3",
+      "file": "jingles/wii/call-of-duty-modern-warfare-3.wav"
+    },
+    {
+      "name": "Castlevania Judgment",
+      "file": "jingles/wii/castlevania-judgment.wav"
+    },
+    {
+      "name": "Dragon Ball - Revenge of King Piccolo",
+      "file": "jingles/wii/dragon-ball-revenge-of-king-piccolo.wav"
+    },
+    {
+      "name": "DreamWorks Super Star Kartz",
+      "file": "jingles/wii/dreamworks-super-star-kartz.wav"
+    },
+    {
       "name": "Fire Emblem - Radiant Dawn",
       "file": "jingles/wii/fire-emblem-radiant-dawn.wav",
       "regex": "fire.?emblem.*radiant dawn"
+    },
+    {
+      "name": "GoldenEye 007",
+      "file": "jingles/wii/goldeneye-007.wav"
+    },
+    {
+      "name": "GTI Club Supermini Festa",
+      "file": "jingles/wii/gti-club-supermini-festa.wav"
+    },
+    {
+      "name": "Guilty Gear XX Accent Core",
+      "file": "jingles/wii/guilty-gear-xx-accent-core.wav"
+    },
+    {
+      "name": "Harvest Moon - Animal Parade",
+      "file": "jingles/wii/harvest-moon-animal-parade.wav"
+    },
+    {
+      "name": "Harvest Moon - Magical Melody",
+      "file": "jingles/wii/harvest-moon-magical-melody.wav"
+    },
+    {
+      "name": "Harvest Moon - Tree of Tranquility",
+      "file": "jingles/wii/harvest-moon-tree-of-tranquility.wav"
+    },
+    {
+      "name": "Klonoa",
+      "file": "jingles/wii/klonoa.wav"
     },
     {
       "name": "Last Story, The",
@@ -679,6 +891,10 @@
       "regex": "mario kart wii|mkwii"
     },
     {
+      "name": "Mario Sports Mix",
+      "file": "jingles/wii/mario-sports-mix.wav"
+    },
+    {
       "name": "Metroid - Other M",
       "file": "jingles/wii/metroid-other-m.wav",
       "regex": "metroid.*other m"
@@ -689,9 +905,21 @@
       "regex": "metroid prime trilogy"
     },
     {
+      "name": "Munchables, The",
+      "file": "jingles/wii/munchables-the.wav"
+    },
+    {
       "name": "Muramasa - The Demon Blade",
       "file": "jingles/wii/muramasa-the-demon-blade.wav",
       "regex": "muramasa.*(demon blade|the demon blade)"
+    },
+    {
+      "name": "Naruto - Clash of Ninja Revolution",
+      "file": "jingles/wii/naruto-clash-of-ninja-revolution.wav"
+    },
+    {
+      "name": "Need for Speed - Nitro",
+      "file": "jingles/wii/need-for-speed-nitro.wav"
     },
     {
       "name": "New Super Mario Bros. Wii",
@@ -704,6 +932,14 @@
       "regex": "nights.*journey of dreams"
     },
     {
+      "name": "No More Heroes 2 - Desperate Struggle",
+      "file": "jingles/wii/no-more-heroes-2-desperate-struggle.wav"
+    },
+    {
+      "name": "Pandora's Tower",
+      "file": "jingles/wii/pandoras-tower.wav"
+    },
+    {
       "name": "Pokémon Battle Revolution",
       "file": "jingles/wii/pokemon-battle-revolution.wav",
       "regex": "pok[eé]mon.*battle revolution"
@@ -714,9 +950,37 @@
       "regex": "punch.?out!{0,2}"
     },
     {
+      "name": "Puyo Puyo Puyopuyo 20th Anniversary",
+      "file": "jingles/wii/puyo-puyo-puyopuyo-20th-anniversary.wav"
+    },
+    {
+      "name": "Rayman Origins",
+      "file": "jingles/wii/rayman-origins.wav"
+    },
+    {
+      "name": "Resident Evil Archives - Resident Evil",
+      "file": "jingles/wii/resident-evil-archives-resident-evil.wav"
+    },
+    {
+      "name": "Resident Evil Archives - Resident Evil Zero",
+      "file": "jingles/wii/resident-evil-archives-resident-evil-zero.wav"
+    },
+    {
       "name": "Rhythm Heaven Fever",
       "file": "jingles/wii/rhythm-heaven-fever.wav",
       "regex": "rhythm heaven fever|beat the beat.*rhythm paradise"
+    },
+    {
+      "name": "Samurai Warriors 3",
+      "file": "jingles/wii/samurai-warriors-3.wav"
+    },
+    {
+      "name": "Sonic Colors",
+      "file": "jingles/wii/sonic-colors.wav"
+    },
+    {
+      "name": "SpongeBob's Truth or Square",
+      "file": "jingles/wii/spongebobs-truth-or-square.wav"
     },
     {
       "name": "Super Mario Galaxy",
@@ -730,8 +994,23 @@
     },
     {
       "name": "Super Paper Mario",
-      "file": "jingles/wii/super-paper-mario.wav",
-      "regex": "super paper mario"
+      "file": "jingles/wii/super-paper-mario.wav"
+    },
+    {
+      "name": "Super Smash Bros. Brawl",
+      "file": "jingles/wii/super-smash-bros-brawl.wav"
+    },
+    {
+      "name": "Tatsunoko vs. Capcom - Ultimate All-Stars",
+      "file": "jingles/wii/tatsunoko-vs-capcom-ultimate-all-stars.wav"
+    },
+    {
+      "name": "TrackMania - Build to Race",
+      "file": "jingles/wii/trackmania-build-to-race.wav"
+    },
+    {
+      "name": "Xenoblade Chronicles",
+      "file": "jingles/wii/xenoblade-chronicles.wav"
     }
   ],
   "wiiu": [
