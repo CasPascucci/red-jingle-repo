@@ -15,7 +15,6 @@ on:
 # ─── Permissions ────────────────────────────────────────────────────────────
 permissions:
   contents: write
-  workflows: write
 # ─── Job ────────────────────────────────────────────────────────────────────
 jobs:
   update-regex:
@@ -26,7 +25,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
 
       # 2. Git identity
@@ -88,7 +87,7 @@ jobs:
       - name: Commit regex changes
         if: inputs.dry_run != true
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${{ secrets.WORKFLOW_TOKEN }}@github.com/${{ github.repository }}
           git add index.json
           if git diff --cached --quiet; then
             echo "No regex changes to commit."
@@ -159,7 +158,7 @@ jobs:
           echo "Updated workflow cron to: $CRON"
 
           # Commit state + workflow changes
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${{ secrets.WORKFLOW_TOKEN }}@github.com/${{ github.repository }}
           git add "$STATE_FILE" "$WORKFLOW"
           if git diff --cached --quiet; then
             echo "No schedule changes to commit."
