@@ -15,7 +15,7 @@ on:
 # ─── Permissions ────────────────────────────────────────────────────────────
 permissions:
   contents: write
-
+  workflows: write
 # ─── Job ────────────────────────────────────────────────────────────────────
 jobs:
   update-regex:
