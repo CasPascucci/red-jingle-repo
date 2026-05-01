@@ -1,5 +1,5 @@
 {
-  "interval": "biweekly",
+  "interval": "monthly",
   "empty_runs": 0,
-  "cron": "0 6 1,15 * *"
+  "cron": "0 6 1 * *"
 }

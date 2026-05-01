@@ -3,7 +3,7 @@ name: Sync Upstream & Fill Regex
 # ─── Triggers ───────────────────────────────────────────────────────────────
 on:
   schedule:
-    - cron: "0 6 1,15 * *"  # managed automatically — do not edit this line by hand
+    - cron: "0 6 1 * *"  # managed automatically — do not edit this line by hand
 
   workflow_dispatch:
     inputs:
