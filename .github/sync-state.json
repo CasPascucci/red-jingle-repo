@@ -1,5 +1,5 @@
 {
   "interval": "monthly",
-  "empty_runs": 3,
+  "empty_runs": 4,
   "cron": "0 6 1 * *"
 }
